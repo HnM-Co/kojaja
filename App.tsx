@@ -28,24 +28,28 @@ const AdBanner: React.FC<AdBannerProps> = ({ variant = 'default' }) => {
   return (
     <div className="w-full max-w-7xl mx-auto px-4 md:px-6">
       <div className={`
-        bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg 
-        flex flex-col items-center justify-center text-center overflow-hidden
-        ${isThin ? 'p-2 min-h-[100px]' : 'p-4 min-h-[280px]'}
+        bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg 
+        flex flex-col items-center justify-center text-center overflow-hidden relative mx-auto
+        ${isThin ? 'h-[50px] p-0' : 'p-2 min-h-[100px]'} 
       `}>
+        {/* Thin Banner: Strictly 50px height, No padding, No extra elements */}
+        
         {!isThin && (
-          <span className="font-semibold text-gray-400 mb-2 text-xs uppercase tracking-widest self-start">Sponsored</span>
+          <span className="absolute top-0 right-1 text-[8px] text-gray-400/40 z-10 font-mono tracking-tighter">Sponsored</span>
         )}
         
-        <div className="w-full bg-white/10 rounded flex items-center justify-center relative overflow-hidden w-full h-full">
+        <div className="w-full flex items-center justify-center relative overflow-hidden w-full h-full">
            {/* 
               Google AdSense Code 
-              IMPORTANT: You must replace 'YOUR_AD_SLOT_ID' with your actual data-ad-slot ID from Google AdSense Console.
+              - Client ID: ca-pub-7969346905229420 (Confirmed matching index.html)
+              - Top Banner (Thin): Fixed 50px height.
+              - Bottom Banner: Flexible auto height but starts small.
            */}
            <ins className="adsbygoogle"
-             style={{ display: 'block', width: '100%', minHeight: isThin ? '90px' : '250px' }}
+             style={{ display: 'block', width: '100%', height: isThin ? '50px' : 'auto', minHeight: isThin ? '50px' : '100px' }}
              data-ad-client="ca-pub-7969346905229420"
              data-ad-slot="YOUR_AD_SLOT_ID"
-             data-ad-format="auto"
+             data-ad-format={isThin ? undefined : "auto"} // 'undefined' allows exact size control for thin banners
              data-full-width-responsive="true"></ins>
         </div>
       </div>
@@ -133,8 +137,8 @@ const App: React.FC = () => {
       {/* Main Content with Sections */}
       <main className="relative z-10 px-4 md:px-6 pb-24 max-w-7xl mx-auto">
         
-        {/* Top Ad Banner - Very tight spacing below */}
-        <div className="mb-1">
+        {/* Top Ad Banner - Strictly fixed height wrapper to prevent expansion */}
+        <div className="mb-2 h-[50px] flex items-center justify-center">
           <AdBanner variant="thin" />
         </div>
 
@@ -143,10 +147,10 @@ const App: React.FC = () => {
           if (sectionSounds.length === 0 && section.id !== SoundCategory.HUMAN) return null;
 
           // Spacing Logic: 
-          // Human (First): Very tight (mt-2)
+          // Human (First): Very tight (mt-1)
           // Others: Spacious (mt-24) to give breathing room
           const isHuman = section.id === SoundCategory.HUMAN;
-          const marginTopClass = isHuman ? 'mt-2' : 'mt-24';
+          const marginTopClass = isHuman ? 'mt-1' : 'mt-24';
 
           return (
             <section key={section.id} className={`animate-fade-in-up ${marginTopClass}`}>
@@ -187,7 +191,7 @@ const App: React.FC = () => {
         })}
         
         {/* Bottom Area */}
-        <div className="flex flex-col gap-2 mt-20">
+        <div className="flex flex-col gap-4 mt-20">
           <AdBanner />
           <div className="flex justify-center opacity-40">
              <span className="text-[10px] font-semibold text-gray-500 tracking-widest font-mono">
