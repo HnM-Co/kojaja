@@ -16,7 +16,8 @@ const AdBanner: React.FC<AdBannerProps> = ({ variant = 'default' }) => {
   const isThin = variant === 'thin';
 
   return (
-    <div className={`w-full max-w-7xl mx-auto px-4 md:px-6 ${isThin ? 'mb-4 mt-0' : 'mb-8 mt-4'}`}>
+    // Removed default margins (mt/mb) to let parent container control spacing
+    <div className={`w-full max-w-7xl mx-auto px-4 md:px-6 ${isThin ? 'mb-6' : ''}`}>
       <div className={`
         bg-white/20 backdrop-blur-sm border border-white/30 rounded-lg 
         flex items-center justify-center text-center text-gray-500
@@ -105,26 +106,22 @@ const App: React.FC = () => {
       {/* Header */}
       <header className="relative z-10 px-6 pt-8 pb-2 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto">
         <div className="flex items-center gap-3 mb-4 md:mb-0">
-          <div className="bg-white/40 p-2 rounded-xl backdrop-blur-md shadow-sm border border-white/50">
-             <Sparkles className="text-purple-600 w-6 h-6" />
-          </div>
           <div>
             <h1 className="flex items-center gap-2 text-3xl font-extrabold">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-700 to-pink-600">
-                굿나잇
+                코자자
               </span>
               <div className="flex items-center">
-                 <span className="text-3xl mr-1 not-sr-only">👶</span>
                  <Moon className="w-6 h-6 text-yellow-400 fill-yellow-400 rotate-[-15deg]" />
               </div>
             </h1>
-            <p className="text-sm text-gray-500 font-medium">우리 아기 꿀잠 도우미</p>
+            <p className="text-sm text-gray-500 font-medium">육아 퇴근을 부탁해 🙏</p>
           </div>
         </div>
       </header>
 
       {/* Main Content with Sections */}
-      <main className="relative z-10 px-4 md:px-6 pb-48 max-w-7xl mx-auto space-y-12">
+      <main className="relative z-10 px-4 md:px-6 pb-24 max-w-7xl mx-auto space-y-12">
         {/* Top Ad Banner - Thin Variant */}
         <AdBanner variant="thin" />
 
@@ -170,15 +167,16 @@ const App: React.FC = () => {
           );
         })}
         
-        {/* Bottom Ad Banner - Default Variant */}
-        <AdBanner />
-
-        {/* Footer Credit */}
-        <div className="flex justify-center pt-2 pb-8 opacity-60">
-           <span className="text-xs font-semibold text-gray-500 tracking-widest font-mono">
-             @acedoctor2026
-           </span>
+        {/* Bottom Area: Grouped to remove excess whitespace */}
+        <div className="flex flex-col gap-2">
+          <AdBanner />
+          <div className="flex justify-center opacity-40">
+             <span className="text-[10px] font-semibold text-gray-500 tracking-widest font-mono">
+               @acedoctor2026
+             </span>
+          </div>
         </div>
+
       </main>
 
       {/* Floating Player Control Bar */}
