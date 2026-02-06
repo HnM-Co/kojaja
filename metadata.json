@@ -1,0 +1,7 @@
+{
+  "name": "굿나잇 👶 - 아기 백색 소음기",
+  "description": "A premium, liquid-glass styled white noise application for soothing babies, featuring a wide range of nature and mechanical sounds.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
