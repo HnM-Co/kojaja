@@ -3,7 +3,7 @@ import { SoundItem, SoundCategory, SynthType } from './types';
 import { 
   Heart, Wind, Waves, Coffee, Car, Trees, Droplets, Flame, 
   Leaf, Bug, Bird, Fan, UtensilsCrossed, CloudFog, Keyboard, 
-  PenTool, Mountain, Gem, Zap, ShoppingBag, User
+  PenTool, Mountain, Gem, Zap, ShoppingBag, User, Mic
 } from 'lucide-react';
 
 export const SOUNDS: SoundItem[] = [
@@ -21,7 +21,7 @@ export const SOUNDS: SoundItem[] = [
     id: 'shush',
     label: '쉬소리',
     category: SoundCategory.HUMAN,
-    icon: <Wind className="w-8 h-8" />,
+    icon: <User className="w-8 h-8" />,
     gradient: 'from-pink-300 to-rose-400',
     synthType: SynthType.WHITE,
     src: '/sounds/shush.mp3'
@@ -30,7 +30,7 @@ export const SOUNDS: SoundItem[] = [
     id: 'ah-sound',
     label: '아~ 소리',
     category: SoundCategory.HUMAN,
-    icon: <User className="w-8 h-8" />,
+    icon: <Mic className="w-8 h-8" />,
     gradient: 'from-amber-200 to-orange-400',
     synthType: SynthType.BROWN,
     src: '/sounds/ah.mp3'
@@ -57,7 +57,7 @@ export const SOUNDS: SoundItem[] = [
   },
   {
     id: 'stream',
-    label: '물흐르는소리',
+    label: '물흐르는 소리',
     category: SoundCategory.NATURE,
     icon: <Droplets className="w-8 h-8" />,
     gradient: 'from-cyan-300 to-blue-500',
@@ -66,7 +66,7 @@ export const SOUNDS: SoundItem[] = [
   },
   {
     id: 'fire',
-    label: '장작타는소리',
+    label: '장작 타는 소리',
     category: SoundCategory.NATURE,
     icon: <Flame className="w-8 h-8" />,
     gradient: 'from-orange-600 to-red-700',

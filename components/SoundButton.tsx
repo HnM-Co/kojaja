@@ -42,7 +42,7 @@ const SoundButton: React.FC<SoundButtonProps> = ({ sound, isActive, onClick }) =
 
       {/* Label */}
       <span className={`
-        relative z-10 mt-3 text-sm font-bold tracking-wide transition-colors duration-300
+        relative z-10 mt-3 text-xs md:text-sm font-bold tracking-tight md:tracking-wide transition-colors duration-300 whitespace-nowrap
         ${isActive ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-800'}
       `}>
         {sound.label}

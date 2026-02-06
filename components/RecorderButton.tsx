@@ -183,7 +183,7 @@ const RecorderButton: React.FC<RecorderButtonProps> = ({ isActive, onPlay, onSto
 
       {/* Label */}
       <span className={`
-        relative z-10 mt-3 text-sm font-bold tracking-wide transition-colors duration-300
+        relative z-10 mt-3 text-xs md:text-sm font-bold tracking-tight md:tracking-wide transition-colors duration-300 whitespace-nowrap
         ${isActive || isRecording ? 'text-rose-900' : 'text-rose-800/80'}
       `}>
         {label}
